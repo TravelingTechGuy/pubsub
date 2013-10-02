@@ -1,4 +1,4 @@
-##Redis + Socket.io pub/sub example
+##Redis + Socket.io + Express pub/sub example
 
 ###Install:
 
