@@ -18,8 +18,8 @@ var getMessage = function(finalMessage) {
 var publishMessage = function() {
 	setTimeout(function() {
 		if(finalMessage) {
-			console.log('final message sent');
-			client.end();
+			console.log('Final message sent. Quitting...');
+			client.quit();
 		}
 		else {
 			var message = getMessage(finalMessage);
