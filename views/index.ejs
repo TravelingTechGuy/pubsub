@@ -3,9 +3,10 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% var server = 'http://' + ip + ':' + port; %>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
-		var socket = io.connect('http://localhost:3000');
+		var socket = io.connect('<%= server%>');
 		socket.on('message', function (data) {
 			document.getElementById('messages').innerHTML += '<li>' + JSON.stringify(data) + '</li>';
 			console.log(data);
@@ -17,6 +18,7 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <h3>Listening to <%= server%></h3>
     <ul id="messages"></div>
   </body>
 </html>

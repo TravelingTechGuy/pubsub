@@ -8,10 +8,12 @@ var express = require('express'),
 	path = require('path'),
 	app = express(),
 	server = http.createServer(app),
-	io = require('socket.io').listen(server, { log: false });
+	io = require('socket.io').listen(server/*, { log: false }*/),
+	url = '127.0.0.1' || require('os').networkInterfaces().en1[1].address; // <-- insert IP or URL here, for socket to listen to
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+app.set('url', url);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -30,5 +32,5 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 server.listen(app.get('port'), function(){
-	console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on url %s:%s', app.get('url'), app.get('port'));
 });
